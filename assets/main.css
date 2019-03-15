@@ -1,0 +1,79 @@
+/*  Colors
+    Photo radius color : #eaeaea
+    Photo box shadow: #c3c3c3
+
+    Fonts
+    Lato font-family: 'Lato', sans-serif;
+    */
+
+body {
+  font-family: "Lato", sans-serif;
+  margin: 0 20%;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1rem;
+}
+
+header .logo {
+  display: flex;
+  align-items: center;
+}
+
+header ul {
+  display: flex;
+}
+
+header ul li {
+  margin: 1rem;
+  list-style: none;
+}
+
+/* User uploaded photos */
+
+.wrapper {
+  display: grid;
+  grid-template-rows: 1fr 4fr;
+}
+
+.profile_intro {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.profile_main {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1rem;
+}
+
+.user_images {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.user_image_container {
+  width: 20rem;
+  height: 20rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.user_image_overlay {
+  position: absolute;
+  background-color: black;
+  content: "";
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 150ms ease-in-out;
+}
+
+.user_image_overlay:hover {
+  opacity: 0.6;
+}
