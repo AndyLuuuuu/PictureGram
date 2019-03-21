@@ -43,12 +43,17 @@
                 width: 30em;
                 line-height: 2em;
                 border: 0;
+                transition: 1s;
+            }
+            form input:hover {
+                opacity: 0.5;
+                transition: 1s;
             }
             .button-submit {
                 background-color: black;
                 color: white;
                 border: 0;
-                font-weight: bold;
+                /* font-weight: bold; */
             }
         </style>
     </head>
