@@ -6,5 +6,6 @@
         <input class="form_input" type="password" name="login-password" placeholder="Password">
         <input class="button_submit" type="submit" name="login-submit" value="Log In">
     </form>
+    <div class="login_register"><p>Don't have an account?</p><a class="register_button" href="../user_register/index.php">Click here</a></div>
 </div>
 <?php include '../views/footer.php'?>

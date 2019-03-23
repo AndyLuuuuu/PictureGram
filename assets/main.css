@@ -292,8 +292,6 @@ header ul li {
   flex-flow: column;
   justify-content: center;
   align-items: center;
-
-  /* background-color: green; */
 }
 
 .login_h1 {
@@ -328,4 +326,39 @@ header ul li {
   border: 0;
   text-transform: uppercase;
   height: 3rem;
+}
+
+/* USER_REGISTER.PHP */
+
+.register_container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.register_h1 {
+  font-size: 3.5em;
+  margin-bottom: 1rem;
+}
+
+.form_register {
+  display: flex;
+  flex-flow: column;
+}
+
+.login_register {
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+}
+
+.register_button {
+  margin-left: 1rem;
+  color: black;
+  text-decoration: none;
 }
