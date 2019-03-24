@@ -32,7 +32,6 @@ class PDOConnection {
         $statement->execute();
         $statement = null;
         $this->closeDBConnection();
-        return $this->db_conn->errorInfo();
     }
 
     function loginUser($email, $password) {
