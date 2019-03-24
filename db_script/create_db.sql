@@ -5,7 +5,7 @@ USE PictureGramDB;
 
 -- create the tables
 CREATE TABLE Account (
-    accountID CHAR(13) NOT NULL,
+    accountID CHAR(30) NOT NULL,
     accountName CHAR(25) NOT NULL,
     profilePath VARCHAR(255), -- make NOT NULL later???
     email VARCHAR(255) NOT NULL UNIQUE,
