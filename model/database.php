@@ -17,14 +17,46 @@ class PDOConnection {
         $this->db_conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
 
+    private function closeDBConnection() {
+        $this->db_conn = null;
+    }
+
     public function registerUser($email, $password, $accountName) {
+        $accountID = uniqid($more_entropy = true);
         $hashed_password = password_hash($password, PASSWORD_BCRYPT);
-        $statement = $this->db_conn->prepare("INSERT INTO Account SET accountID = '12345', accountName = :accountName, profilePath = '1234', email = :email, password = :password");
+        $statement = $this->db_conn->prepare("INSERT INTO Account SET accountID = :accountID, accountName = :accountName, profilePath = '1234', email = :email, password = :password");
+        $statement->bindParam(':accountID', $accountID);
         $statement->bindParam(':accountName', $accountName);
         $statement->bindParam(':email', $email);
         $statement->bindParam(':password', $hashed_password);
         $statement->execute();
+        $statement = null;
+        $this->closeDBConnection();
         return $this->db_conn->errorInfo();
+    }
+
+    function loginUser($email, $password) {
+        $statement = $this->db_conn->prepare('SELECT accountID, password FROM Account WHERE email = :email');
+        $statement->bindValue(':email', $email);
+        $statement->execute();
+        $auth_result = $statement->fetch();
+        try {
+            $accountID = $auth_result[0];
+            $hashed_password = $auth_result[1];
+            $statement = null;
+            $this->closeDBConnection();
+            if (password_verify($password, $hashed_password)) {
+                return array($accountID, true);
+            } else {
+                $statement = null;
+                $this->closeDBConnection();
+                return false;
+            }
+        } catch (PDOException $e) {
+            $statement = null;
+            $this->closeDBConnection();
+            return false;
+        }
     }
 }
 ?>

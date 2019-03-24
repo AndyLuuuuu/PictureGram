@@ -1,7 +1,3 @@
 <?php 
-include('./model/database.php');
-
-$db_conn = connectToDB();
-registerUser($db_conn);
+header('Location: ./user_login');
 ?>
-<a href="user_login">login</a>

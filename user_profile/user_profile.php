@@ -1,4 +1,5 @@
 <?php include '../views/header.php'; ?>
+<?php echo $_SESSION['accountID']; ?>
 <section class="wrapper">
     <div class="profile_intro">
         <p>test</p>

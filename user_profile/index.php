@@ -1,4 +1,5 @@
 <?php 
+session_start();
  $images = array();
  $images[] = 'https://images.unsplash.com/photo-1552010534-e4e817b173c2?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjF9';
  $images[] = 'https://images.unsplash.com/photo-1550726932-174e0acbb076?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjF9';
