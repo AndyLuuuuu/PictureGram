@@ -186,54 +186,118 @@ select {
 
 body {
   font-family: "Lato", sans-serif;
+  margin: 0 auto;
+  width: 75vw;
 }
 
 header {
+  position: relative;
+}
+
+header .headerContainer {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 4rem;
+  transition: all 100ms ease-in-out;
+  padding: 0 1rem;
 }
 
-header .logo {
+header .toggleHeader {
+  background-color: #313639;
+}
+
+header .MenuContainer {
+  width: 2.5rem;
+  height: 2.5rem;
+  position: relative;
+  cursor: pointer;
   display: flex;
+  justify-content: center;
   align-items: center;
 }
 
-header .hamburger_menu_icon {
-  width: 2.1rem;
-}
-
-.dropdown_menu {
-  z-index: 100;
-  position: absolute;
-  background-color: white;
-  transform: translateY(-60%);
-  width: 100%;
-  background-color: white;
-  height: 25rem;
-  transition: transform 150ms ease-in-out;
-  display: flex;
-  flex-flow: column;
-}
-
-.dropdown_menu_show {
-  transform: translateY(40%);
-}
-
-.close_menu_icon {
+header .showMenu {
   width: 2rem;
-  align-self: flex-end;
-  margin: 1.5rem 0 0;
+  position: absolute;
+  z-index: 25;
+  transition: all 100ms ease-in-out;
 }
 
-/* header ul {
+header .closeMenu {
+  width: 1.6rem;
+  position: absolute;
+  z-index: -25;
+  opacity: 0;
+  transition: all 100ms ease-in-out;
+}
+
+header .invisible {
+  opacity: 0;
+  z-index: -25;
+}
+
+header .visible {
+  opacity: 1;
+  z-index: 25;
+}
+
+header .logoH1 {
+  font-family: "Yesteryear", cursive;
+  font-size: 2.5rem;
+  font-weight: 300;
+  transition: all 100ms ease-in-out;
+}
+
+header .toggleLogo {
+  color: #e4e4e4;
+}
+
+nav ul {
   display: flex;
 }
 
-header ul li {
-  margin: 1rem;
-  list-style: none;
-} */
+header .menuDropdown {
+  position: absolute;
+  width: 100%;
+  z-index: -50;
+  background-color: white;
+  opacity: 0;
+  transition: opacity 100ms ease-in-out;
+}
+
+header .menuDropdown nav ul {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+header .menuDropdown nav ul li {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 4rem;
+  width: 100%;
+  transition: all 100ms ease-in-out;
+  cursor: pointer;
+}
+
+header .menuDropdown nav ul li:nth-child(-n + 3) {
+  border-top: 0.1px solid #313639;
+  border-bottom: 0.1px solid #313639;
+  border-left: 0.1px solid #313639;
+}
+
+header .menuDropdown nav ul li:nth-of-type(4) {
+  border: 0.05px solid #313639;
+}
+
+header .menuDropdown nav ul li:hover {
+  background-color: #313639;
+  color: #e4e4e4;
+}
 
 /* User uploaded photos */
 

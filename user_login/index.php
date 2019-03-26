@@ -1,6 +1,6 @@
 <?php 
 session_start();
-unset($_SESSION);
+// session_destroy();
 include('../model/database.php');   // connects to DB
 
 // get action to do
@@ -25,7 +25,7 @@ switch($action) {
         $auth_result = $db->loginUser($email, $password);
         if ($auth_result == false) {
             echo 'Login failed';
-        } else if (sizeof($auth_result == 2)) {
+        } else {
             $_SESSION['accountID'] = $auth_result[0];
             $_SESSION['isLoggedIn'] = $auth_result[1];
             header("Location: ../user_profile");

@@ -1,5 +1,6 @@
 <?php include '../views/header.php'; ?>
-<?php echo $_SESSION['accountID']; ?>
+<!-- <?php echo $_SESSION['accountID']; ?> -->
+<?php include '../views/navigationbar.php' ?>
 <section class="wrapper">
     <div class="profile_intro">
         <p>test</p>

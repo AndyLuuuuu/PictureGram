@@ -41,6 +41,7 @@ class PDOConnection {
         $auth_result = $statement->fetch();
         try {
             $accountID = $auth_result[0];
+            echo $auth_result[0];
             $hashed_password = $auth_result[1];
             $statement = null;
             $this->closeDBConnection();
