@@ -24,7 +24,6 @@ closeMenu.addEventListener("click", () => {
   closeMenu.classList.toggle("visible");
   dropdown.style.opacity = 0;
   dropdown.style.zIndex = -50;
-  dropdown.style.opacity = 0;
 });
 // const dropdownMenu = document.getElementsByClassName("dropdown_menu")[0];
 // console.log(dropdownMenu);

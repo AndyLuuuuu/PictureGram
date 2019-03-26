@@ -188,6 +188,7 @@ body {
   font-family: "Lato", sans-serif;
   margin: 0 auto;
   width: 75vw;
+  height: 100vh;
 }
 
 header {
@@ -273,15 +274,7 @@ header .menuDropdown nav ul {
 }
 
 header .menuDropdown nav ul li {
-  font-size: 1.2rem;
-  text-transform: uppercase;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 4rem;
   width: 100%;
-  transition: all 100ms ease-in-out;
-  cursor: pointer;
 }
 
 header .menuDropdown nav ul li:nth-child(-n + 3) {
@@ -294,9 +287,31 @@ header .menuDropdown nav ul li:nth-of-type(4) {
   border: 0.05px solid #313639;
 }
 
-header .menuDropdown nav ul li:hover {
-  background-color: #313639;
+header .menuDropdown nav ul li a {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 4rem;
+  width: 100%;
+  transition: all 100ms ease-in-out;
+  cursor: pointer;
+  color: black;
+}
+
+header .menuDropdown nav ul li a:hover {
   color: #e4e4e4;
+  background-color: #313639;
+}
+
+header .menuDropdown nav ul li a:visited {
+  color: none;
+}
+
+header .menuDropdown nav ul li a:link {
+  color: none;
 }
 
 /* User uploaded photos */
@@ -350,7 +365,7 @@ header .menuDropdown nav ul li:hover {
 
 /* USER_LOGIN.PHP */
 .login_container {
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   display: flex;
   flex-flow: column;
@@ -395,7 +410,7 @@ header .menuDropdown nav ul li:hover {
 /* USER_REGISTER.PHP */
 
 .register_container {
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   display: flex;
   flex-flow: column;
@@ -425,4 +440,65 @@ header .menuDropdown nav ul li:hover {
   margin-left: 1rem;
   color: black;
   text-decoration: none;
+}
+
+/* USER_CREATE_POST.PHP */
+
+.createPostContainer {
+  width: 100%;
+  height: calc(100vh - 5rem);
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.createPostH1 {
+  font-size: 2rem;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.imageUploadForm {
+  width: 30rem;
+  height: 20rem;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.imageUploadTitle {
+  font-size: 1.2rem;
+  width: 100%;
+}
+
+.imageUploadDesc {
+  resize: none;
+  width: 100%;
+  height: 10rem;
+  font-size: 1.2rem;
+}
+
+.imageUploadButtons {
+  width: 102%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.imageUploadButtons .imageUploadButton {
+  width: 7rem;
+  height: 2rem;
+  text-transform: uppercase;
+  background-color: #e4e4e4;
+  color: #313639;
+  transition: background-color 100ms ease-in-out, color 100ms ease-in-out;
+  border: 1px solid #313639;
+}
+
+.imageUploadButtons .imageUploadButton:hover {
+  background-color: #313639;
+  color: #e4e4e4;
+  cursor: pointer;
 }
