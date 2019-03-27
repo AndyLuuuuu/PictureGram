@@ -8,10 +8,10 @@
         <p>test</p>
     </div>
     <div class="profile_main">
-        <?php foreach ($images as $image) : ?>
+        <?php foreach ($posts as $post) : ?>
         <div class="user_image_container">
             <div class="user_image_overlay"></div>
-            <img class="user_images" src=<?php echo "{$image}"?> />
+            <img class="user_images" src=<?php echo "../FileServer/UserPostPhotos/{$post->getPostID()}.{$post->getExtension()}"?> />
         </div>
 
         <?php endforeach ?>

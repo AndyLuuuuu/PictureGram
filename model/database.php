@@ -1,4 +1,5 @@
-<?php 
+<?php
+include('Post.php');
 class PDOConnection {
     private $db_conn;
 
@@ -34,9 +35,9 @@ class PDOConnection {
         $this->closeDBConnection();
     }
 
-    function loginUser($email, $password) {
+    public function loginUser($email, $password) {
         $statement = $this->db_conn->prepare('SELECT accountID, password FROM Account WHERE email = :email');
-        $statement->bindValue(':email', $email);
+        $statement->bindParam(':email', $email);
         $statement->execute();
         $auth_result = $statement->fetch();
         try {
@@ -57,6 +58,42 @@ class PDOConnection {
             $this->closeDBConnection();
             return false;
         }
+    }
+
+    public function newPost($accountID, $postID, $postName, $postDesc, $postImageExt) {
+        $date = date('Y-m-d');
+        $statement = $this->db_conn->prepare('INSERT INTO Post SET accountID = :accountID, postID = :postID, postName = :postName, postDesc = :postDesc, postImageExt = :postImageExt, datePosted = :datePosted');
+        $statement->bindParam(':accountID', $accountID);
+        $statement->bindParam(':postID', $postID);
+        $statement->bindParam(':postName', $postName);
+        $statement->bindParam(':postImageExt', $postImageExt);
+        $statement->bindParam(':postDesc', $postDesc);
+        $statement->bindParam(':accountID', $accountID);
+        $statement->bindParam(':datePosted', $date);
+        if ($statement->execute()) {
+            $statement = null;
+            $this->closeDBConnection();
+            return true;
+        } else {
+            $statement = null;
+            $this->closeDBConnection();
+            return false;
+        }
+    }
+
+    public function retrievePosts($accountID) {
+        $statement = $this->db_conn->prepare('SELECT * FROM Post WHERE accountID = :accountID');
+        $statement->bindParam(':accountID', $accountID);
+        $statement->execute();
+        $postRows = $statement->fetchAll(PDO::FETCH_ASSOC);
+        $posts = array();
+        foreach($postRows as $postRow) {
+            $post = new Post($postRow['postID'], $postRow['postName'], $postRow['postDesc'], $postRow['postImageExt'], $postRow['datePosted']);
+            $posts[] = $post;
+        }
+        $statement = null;
+        $this->closeDBConnection();
+        return $posts;
     }
 }
 ?>

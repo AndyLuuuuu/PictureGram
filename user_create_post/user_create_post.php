@@ -5,8 +5,8 @@
     <h1 class="createPostH1">Create a new post</h1>
         <form class="imageUploadForm" action="." method="POST" id="imageUploadForm" enctype="multipart/form-data">
                 <input type="hidden" name="action" value="image_file_upload"/>
-                <input class="imageUploadTitle" type="text" name="postTitle" placeholder="Write a post title..."/>
-                <textarea class="imageUploadDesc" maxlength="200" placeholder="Write a description..."></textarea>
+                <input class="imageUploadTitle" type="text" name="imageUploadTitle" placeholder="Write a post title..." form="imageUploadForm"/>
+                <textarea class="imageUploadDesc" maxlength="200" placeholder="Write a description..." form="imageUploadForm" name="imageUploadDesc"></textarea>
             <div class="imageUploadButtons">
                 <input type="file" name="imageFile"/>
             <div class="cancelSubmitButtons">

@@ -1,7 +1,7 @@
 <?php 
 session_start();
 // session_destroy();
-include('../model/database.php');   // connects to DB
+include('../model/Database.php');   // connects to DB
 
 // get action to do
 $action = filter_input(INPUT_POST, 'action');

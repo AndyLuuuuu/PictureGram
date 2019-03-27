@@ -1,4 +1,5 @@
 <?php 
+include('../model/Database.php');
 session_start();
 
 $action = filter_input(INPUT_POST, 'action');
@@ -12,15 +13,33 @@ switch ($action) {
         break;
     case 'image_file_upload':
         if(isset($_FILES['imageFile'])) {
+            if ($_FILES['imageFile']['size'] <= 0) {
+                $error = "Something is wrong with this image...";
+                include('../views/errorPage.php');
+            }
             $fileName = $_FILES['imageFile']['name'];
             $fileNameArray = explode('.', $fileName);
             $fileExt = end($fileNameArray);
             if ($fileExt === 'jpg' || $fileExt === 'jpeg' || $fileExt === 'png') {
-                echo 'lol';
-                $uniqueID = uniqid("pgPostPhoto", true);
+                if($_FILES['imageFile']['size'] > 2097152) {
+                    $error = "Image size cannot exceed 2MB!";
+                    include('../views/errorPage.php');
+                }
+                $uniqueID = uniqid("", true);
                 $uploadFileName = $uniqueID . "." . $fileExt;
                 if (move_uploaded_file($_FILES['imageFile']['tmp_name'], "../FileServer/UserPostPhotos/" . $uploadFileName) == TRUE) {
-                    header("Location: ../user_profile");
+                    // $db = new PDOConnection();
+                    $accountID = $_SESSION['accountID'];
+                    $postID = $uniqueID;
+                    $postName = filter_input(INPUT_POST, "imageUploadTitle");
+                    $postDesc = filter_input(INPUT_POST, "imageUploadDesc");
+                    $db = new PDOConnection();
+                    if ($db->newPost($accountID, $postID, $postName, $postDesc, $fileExt)) {
+                        header("Location: ../user_profile");
+                    } else {
+                        $error = "Oh no! Something went wrong!";
+                        include('../views/errorPage.php');
+                    }
                 };
             } else {
                 $error = "Please upload image files ending with .jpg/.jpeg/.png!";

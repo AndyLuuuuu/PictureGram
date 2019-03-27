@@ -14,11 +14,12 @@ CREATE TABLE Account (
 );
 
 CREATE TABLE Post (
-    accountID CHAR(13) NOT NULL,
-    postID CHAR(13) NOT NULL,
-    titleName VARCHAR(255) NOT NULL,
+    accountID CHAR(30) NOT NULL,
+    postID CHAR(30) NOT NULL,
+    postName VARCHAR(255) NOT NULL,
+    postDesc VARCHAR(255) DEFAULT "",
+    postImageExt VARCHAR(4),
     datePosted DATETIME NOT NULL,
-    imagePath VARCHAR(255), -- make NOT NULL later
     PRIMARY KEY (postID),
     FOREIGN KEY (accountID)
         REFERENCES Account (accountID)
@@ -27,10 +28,10 @@ CREATE TABLE Post (
 );
 
 CREATE TABLE PostComment (
-    accountID CHAR(13) NOT NULL,
-    postID CHAR(13) NOT NULL,
-    commentID CHAR(13) NOT NULL,
-    datePosted DATETIME NOT NULL,
+    accountID CHAR(30) NOT NULL,
+    postID CHAR(30) NOT NULL,
+    commentID CHAR(30) NOT NULL,
+    datePosted DATE NOT NULL,
     comment VARCHAR(255),
     PRIMARY KEY (commentID),
     FOREIGN KEY (accountID)

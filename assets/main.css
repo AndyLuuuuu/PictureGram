@@ -82,10 +82,12 @@ video {
   font-size: 100%;
   vertical-align: baseline;
   background: transparent;
+  font-family: "Lato", sans-serif;
 }
 
 body {
   line-height: 1;
+  font-family: "Lato", sans-serif;
 }
 
 article,
@@ -185,7 +187,6 @@ select {
 /* =================================================*/
 
 body {
-  font-family: "Lato", sans-serif;
   margin: 0 auto;
   width: 75vw;
   height: 100vh;
@@ -460,7 +461,7 @@ header .menuDropdown nav ul li a:link {
 }
 
 .imageUploadForm {
-  width: 30rem;
+  width: 40rem;
   height: 20rem;
   display: flex;
   flex-flow: column;
@@ -478,23 +479,26 @@ header .menuDropdown nav ul li a:link {
   width: 100%;
   height: 10rem;
   font-size: 1.2rem;
+  font-family: "Lato", sans-serif;
+  letter-spacing: 0;
 }
 
 .imageUploadButtons {
-  width: 102%;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .imageUploadButtons .imageUploadButton {
-  width: 7rem;
-  height: 2rem;
+  width: 10rem;
+  height: 2.5rem;
   text-transform: uppercase;
   background-color: #e4e4e4;
   color: #313639;
   transition: background-color 100ms ease-in-out, color 100ms ease-in-out;
   border: 1px solid #313639;
+  font-weight: bold;
 }
 
 .imageUploadButtons .imageUploadButton:hover {
