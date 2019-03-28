@@ -23,7 +23,7 @@ class PDOConnection {
     }
 
     public function registerUser($email, $password, $accountName) {
-        $accountID = uniqid($more_entropy = true);
+        $accountID = uniqid("", true);
         $hashed_password = password_hash($password, PASSWORD_BCRYPT);
         $statement = $this->db_conn->prepare("INSERT INTO Account SET accountID = :accountID, accountName = :accountName, profilePath = '1234', email = :email, password = :password");
         $statement->bindParam(':accountID', $accountID);
@@ -81,19 +81,49 @@ class PDOConnection {
         }
     }
 
-    public function retrievePosts($accountID) {
-        $statement = $this->db_conn->prepare('SELECT * FROM Post WHERE accountID = :accountID');
+    public function retrievePostsFromUser($accountID) {
+        $statement = $this->db_conn->prepare('SELECT Post.*, Account.accountName FROM Post INNER JOIN account ON Account.accountID = Post.accountID WHERE Post.accountID = :accountID');
         $statement->bindParam(':accountID', $accountID);
         $statement->execute();
         $postRows = $statement->fetchAll(PDO::FETCH_ASSOC);
         $posts = array();
         foreach($postRows as $postRow) {
-            $post = new Post($postRow['postID'], $postRow['postName'], $postRow['postDesc'], $postRow['postImageExt'], $postRow['datePosted']);
+            $post = new Post($postRow['postID'], $postRow['postName'], $postRow['postDesc'], $postRow['postImageExt'], $postRow['datePosted'], $postRow['accountName']);
             $posts[] = $post;
         }
         $statement = null;
         $this->closeDBConnection();
         return $posts;
+    }
+
+    public function retrieveComments($postID) {
+        $statement = $this->db_conn->prepare('SELECT account.accountName, postcomment.comment, postcomment.commentID, postcomment.datePosted FROM account INNER JOIN postcomment ON account.accountID = postcomment.accountID WHERE postcomment.postID = :postID');
+        $statement->bindParam(':postID', $postID);
+        $statement->execute();
+        $comments = $statement->fetchAll(PDO::FETCH_ASSOC);
+        $statement = null;
+        $this->closeDBConnection();
+        return $comments;
+    }
+
+    public function postComment($accountID, $postID, $comment) {
+        $date = date('Y-m-d');
+        $commentID = uniqid("", true);
+        $statement = $this->db_conn->prepare('INSERT INTO PostComment SET accountID = :accountID, postID = :postID, commentID = :commentID, datePosted = :datePosted, comment = :comment');
+        $statement->bindParam(':accountID', $accountID);        
+        $statement->bindParam(':postID', $postID);        
+        $statement->bindParam(':commentID', $commentID);        
+        $statement->bindParam(':datePosted', $date);        
+        $statement->bindParam(':comment', $comment);
+        if ($statement->execute()) {
+            $statement = null;
+            $this->closeDBConnection();
+            return true;
+        } else {
+            $statement = null;
+            $this->closeDBConnection();
+            return false;
+        }
     }
 }
 ?>

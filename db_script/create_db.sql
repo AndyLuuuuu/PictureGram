@@ -43,3 +43,6 @@ CREATE TABLE PostComment (
 
 CREATE USER 'pg_user'@'localhost' IDENTIFIED BY 'pg_user';
 GRANT SELECT, DELETE, INSERT, UPDATE ON PictureGramDB.* TO 'pg_user'@'localhost';
+
+
+SELECT account.accountName, postcomment.comment, postcomment.commentID, postcomment.datePosted FROM account INNER JOIN postcomment ON account.accountID = postcomment.accountID;

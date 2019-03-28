@@ -5,13 +5,15 @@ class Post {
     private $postDesc;
     private $postImageExt;
     private $datePosted;
+    private $accountName;
 
-    public function __construct($postID, $postName, $postDesc, $postImageExt, $datePosted) {
+    public function __construct($postID, $postName, $postDesc, $postImageExt, $datePosted, $accountName) {
         $this->postID = $postID;
         $this->postName = $postName;
         $this->postDesc = $postDesc;
         $this->postImageExt = $postImageExt;
         $this->datePosted = $datePosted;
+        $this->accountName = $accountName;
     }
 
     public function getPostID() {
@@ -32,6 +34,10 @@ class Post {
 
     public function getDatePosted() {
         return $this->datePosted;
+    }
+
+    public function getAccountName() {
+        return $this->accountName;
     }
 }
 ?>

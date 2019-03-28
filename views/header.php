@@ -12,3 +12,4 @@
 </head>
 
 <body>
+<div class="page_overlay" id="page_overlay"></div>
