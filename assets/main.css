@@ -315,9 +315,9 @@ header .menuDropdown nav ul li a:link {
   color: none;
 }
 
-/* User uploaded photos */
+/* USER_PROFILE.PHP */
 
-.wrapper {
+.profile_wrapper {
   position: relative;
   display: grid;
   grid-template-rows: 1fr 4fr;
@@ -356,15 +356,17 @@ header .menuDropdown nav ul li a:link {
   content: "";
   width: 100%;
   height: 100%;
-  opacity: 0;
+  opacity: 0.3;
+  cursor: pointer;
   transition: opacity 150ms ease-in-out;
 }
 
 .user_image_overlay:hover {
-  opacity: 0.6;
+  opacity: 0;
 }
 
 /* USER_LOGIN.PHP */
+
 .login_container {
   width: 100%;
   height: 100vh;
@@ -395,12 +397,8 @@ header .menuDropdown nav ul li a:link {
   outline: none;
 }
 
-.form_input:hover {
-}
-
 .button_submit {
   font-size: 1rem;
-  margin-top: 1rem;
   background-color: black;
   color: white;
   border: 0;
@@ -507,10 +505,10 @@ header .menuDropdown nav ul li a:link {
   cursor: pointer;
 }
 
-/* USER_PROFILE.PHP POPUP MODAL */
+/* USER_PROFILE.PHP/USER_NEWSFEED.PHP POPUP MODAL */
 
 .page_overlay {
-  position: absolute;
+  position: fixed;
   content: "";
   top: 0;
   left: 0;
@@ -523,11 +521,12 @@ header .menuDropdown nav ul li a:link {
 
 .popup_modal {
   visibility: hidden;
-  position: absolute;
+  position: fixed;
   z-index: 100;
   top: 0;
   left: 0;
   right: 0;
+  bottom: 0;
   margin: auto;
   width: 50rem;
   height: 50rem;
@@ -571,9 +570,11 @@ header .menuDropdown nav ul li a:link {
 .popup_modal_post_details {
   padding: 1rem;
   box-sizing: border-box;
+  width: 100%;
 }
 
 .popup_modal_post_desc {
+  min-height: 3rem;
   margin: 1rem 0;
   background-color: white;
   width: 100%;
@@ -620,6 +621,11 @@ header .menuDropdown nav ul li a:link {
 .comment_input_container {
   display: flex;
   width: 100%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  box-sizing: border-box;
 }
 
 .comment_input {
@@ -652,4 +658,21 @@ header .menuDropdown nav ul li a:link {
 
 .comment_submit:focus {
   outline: none;
+}
+
+/* USER_NEWSFEED.PHP */
+
+.newsfeed_wrapper {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  padding: 10rem 0;
+}
+
+.newsfeed_image {
+  width: 30rem;
+  height: 30rem;
+  background-position: center;
+  background-size: cover;
+  background-image: url("../FileServer/UserPostPhotos/5c9d20b98fc2d7.75327951.jpg");
 }

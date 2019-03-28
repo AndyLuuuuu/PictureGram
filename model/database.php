@@ -96,6 +96,20 @@ class PDOConnection {
         return $posts;
     }
 
+    public function retrieveAllPosts() {
+        $statement = $this->db_conn->prepare('SELECT Post.*, Account.accountName FROM Post INNER JOIN account ON Account.accountID = Post.accountID');
+        $statement->execute();
+        $postRows = $statement->fetchAll(PDO::FETCH_ASSOC);
+        $posts = array();
+        foreach($postRows as $postRow) {
+            $post = new Post($postRow['postID'], $postRow['postName'], $postRow['postDesc'], $postRow['postImageExt'], $postRow['datePosted'], $postRow['accountName']);
+            $posts[] = $post;
+        }
+        $statement = null;
+        $this->closeDBConnection();
+        return $posts;
+    }
+
     public function retrieveComments($postID) {
         $statement = $this->db_conn->prepare('SELECT account.accountName, postcomment.comment, postcomment.commentID, postcomment.datePosted FROM account INNER JOIN postcomment ON account.accountID = postcomment.accountID WHERE postcomment.postID = :postID');
         $statement->bindParam(':postID', $postID);

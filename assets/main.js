@@ -6,11 +6,15 @@ const logoH1 = document.getElementById("PGLogo");
 const userImages = document.getElementsByClassName("user_image_overlay");
 const pageOverlay = document.getElementById("page_overlay");
 const popupModal = document.getElementById("popup_modal");
+const commentsDiv = document.getElementById("modal_post_comments");
 
 var currentPhotoID = null;
 
 pageOverlay.addEventListener("click", () => {
   popupModal.classList.remove("popup_modal_show");
+  while (commentsDiv.firstChild) {
+    commentsDiv.removeChild(commentsDiv.firstChild);
+  }
   pageOverlay.style.display = "none";
 });
 
@@ -19,7 +23,7 @@ for (var i = 0; i < userImages.length; i++) {
   userImages[i].addEventListener("click", event => {
     var dataset = event.target.dataset;
     currentPhotoID = dataset.photoid;
-    console.log(currentPhotoID);
+    console.log(dataset);
     pageOverlay.style.display = "initial";
     popupModal.classList.add("popup_modal_show");
     popupModal.children[0].children[0].textContent = dataset.postname;
@@ -29,6 +33,7 @@ for (var i = 0; i < userImages.length; i++) {
     popupModal.children[1].style.backgroundImage = `url('../FileServer/UserPostPhotos/${
       dataset["photoid"]
     }.${dataset["photoext"]}')`;
+    popupModal.children[2].children[0].textContent = dataset.postdesc;
     fetchComments(dataset.photoid);
   });
 }
@@ -37,7 +42,6 @@ function fetchComments(photoid) {
   var xhr = new XMLHttpRequest();
   xhr.onload = () => {
     if (xhr.status >= 200 && xhr.status < 300) {
-      const commentsDiv = document.getElementById("modal_post_comments");
       const fragment = document.createDocumentFragment();
       var commentDiv;
       var content;
@@ -60,7 +64,6 @@ function fetchComments(photoid) {
         commentDiv.appendChild(date);
         fragment.appendChild(commentDiv);
       });
-      commentsDiv.appendChild(fragment);
     } else {
       alert("Oh no! Something went wrong!");
     }
@@ -75,7 +78,7 @@ function postComment() {
   var accountID = document.getElementById("current_user").value;
   var comment = document.getElementById("comment_input").value;
   var postID = currentPhotoID;
-  if (comment === NULL || comment.length <= 0 || comment === "") {
+  if (comment === null || comment.length <= 0 || comment === "") {
     alert("Please enter your comment!");
   } else {
     var xhr = new XMLHttpRequest();
@@ -122,17 +125,3 @@ closeMenu.addEventListener("click", () => {
   dropdown.style.opacity = 0;
   dropdown.style.zIndex = -50;
 });
-
-// const dropdownMenu = document.getElementsByClassName("dropdown_menu")[0];
-// console.log(dropdownMenu);
-// console.log(hamburgerMenu);
-
-// hamburgerMenu[0].addEventListener("click", () => {
-//   console.log("clicked");
-//   dropdownMenu.classList.add("dropdown_menu_show");
-// });
-
-// closeMenu[0].addEventListener("click", () => {
-//   console.log("clicked");
-//   dropdownMenu.classList.remove("dropdown_menu_show");
-// });

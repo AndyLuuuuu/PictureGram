@@ -15,6 +15,7 @@ switch($action) {
         if(isset($_SESSION['accountID']) && isset($_SESSION['isLoggedIn'])) {
             header('Location: ../user_profile');
         } else {
+            $auth_error = null;
             include('./user_login.php'); 
         }
         break;
@@ -24,7 +25,8 @@ switch($action) {
         $password = filter_input(INPUT_POST, 'login_password');
         $auth_result = $db->loginUser($email, $password);
         if ($auth_result == false) {
-            echo 'Login failed';
+            $auth_error = "Please check your login credentials!";
+            include('./user_login.php'); 
         } else {
             $_SESSION['accountID'] = $auth_result[0];
             $_SESSION['isLoggedIn'] = $auth_result[1];
