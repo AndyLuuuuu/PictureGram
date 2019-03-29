@@ -5,7 +5,7 @@ include('../model/Database.php');
 if (isset($_SESSION['accountID']) && isset($_SESSION['isLoggedIn'])) {
     $db = new PDOConnection();
     $posts = $db->retrieveAllPosts($_SESSION['accountID']);
-    include('./user_newsfeed.php');
+    include('./user_discover.php');
 } else {
     header('Location: ../user_login');
 }

@@ -668,16 +668,42 @@ header .menuDropdown nav ul li a:link {
 
 .newsfeed_images {
   line-height: 0;
-  -webkit-column-count: 5;
-  -webkit-column-gap: 5px;
-  -moz-column-count: 5;
-  -moz-column-gap: 5px;
-  column-count: 5;
-  column-gap: 5px;
+  -webkit-column-count: 4;
+  -webkit-column-gap: 10px;
+  -moz-column-count: 4;
+  -moz-column-gap: 10px;
+  column-count: 4;
+  column-gap: 10px;
 }
 
 .newsfeed_image {
   width: 100%;
   height: auto;
-  margin-bottom: 5px;
+}
+
+.newsfeed_image_container {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.newsfeed_image_overlay {
+  background-color: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin-bottom: -5px;
+  transition: opacity 150ms ease-in-out;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  word-wrap: break-word;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: whitesmoke;
+  opacity: 0;
+}
+
+.newsfeed_image_overlay:hover {
+  opacity: 1;
 }

@@ -126,15 +126,29 @@ closeMenu.addEventListener("click", () => {
   dropdown.style.zIndex = -50;
 });
 
-function getRandomSize(min, max) {
-  return Math.round(Math.random() * (max - min) + min);
-}
+window.addEventListener("scroll", () => {
+  var middle =
+    (document.documentElement.scrollHeight -
+      document.documentElement.clientHeight) /
+    2;
+  if (window.pageYOffset > middle) {
+    console.log("lol");
+  }
+});
 
-for (var i = 0; i < 60; i++) {
-  var width = getRandomSize(400, 600);
-  var height = getRandomSize(200, 400);
-  var image = document.createElement("img");
-  image.className = "newsfeed_image";
-  image.src = `//www.lorempixel.com/${width}/${height}`;
-  document.getElementById("newsfeed_images").appendChild(image);
-}
+// MAX SCROLL Y
+console.log(
+  document.documentElement.scrollHeight - document.documentElement.clientHeight
+);
+// function getRandomSize(min, max) {
+//   return Math.round(Math.random() * (max - min) + min);
+// }
+
+// for (var i = 0; i < 60; i++) {
+//   var width = getRandomSize(400, 600);
+//   var height = getRandomSize(200, 400);
+//   var image = document.createElement("img");
+//   image.className = "newsfeed_image";
+//   image.src = `//www.lorempixel.com/${width}/${height}`;
+//   document.getElementById("newsfeed_images").appendChild(image);
+// }

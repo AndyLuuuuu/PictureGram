@@ -9,7 +9,7 @@
 <div class="menuDropdown visible" id="dropdown">
     <nav>
         <ul>
-            <li><a href="../user_newsfeed">Newsfeed</a></li>
+            <li><a href="../user_discover">Discover</a></li>
             <li><a href="../user_create_post">Create Post</a></li>
             <li><a href="../user_profile">Profile</a></li>
             <li><a href="../user_login/user_logout.php">Logout</a></li>
