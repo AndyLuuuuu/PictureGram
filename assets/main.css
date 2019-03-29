@@ -529,7 +529,7 @@ header .menuDropdown nav ul li a:link {
   bottom: 0;
   margin: auto;
   width: 50rem;
-  height: 50rem;
+  height: 53rem;
   display: flex;
   flex-flow: column;
   align-items: flex-start;
@@ -547,17 +547,17 @@ header .menuDropdown nav ul li a:link {
   width: 50rem;
   height: 30rem;
   background-position: center;
-  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: black;
 }
 
 .popup_modal_post_info {
-  background-color: rgba(40, 43, 43, 0.5);
+  background-color: black;
   padding: 1rem;
   box-sizing: border-box;
   width: 100%;
   color: #e4e4e4;
-  position: absolute;
-  top: 5;
 }
 
 .popup_modal_post_account {
@@ -666,7 +666,12 @@ header .menuDropdown nav ul li a:link {
   display: flex;
   flex-flow: column;
   align-items: center;
-  padding: 10rem 0;
+}
+
+.newsfeed_header {
+  font-size: 2.5rem;
+  margin: 3rem 0;
+  font-weight: bold;
 }
 
 .newsfeed_image {
@@ -674,5 +679,5 @@ header .menuDropdown nav ul li a:link {
   height: 30rem;
   background-position: center;
   background-size: cover;
-  background-image: url("../FileServer/UserPostPhotos/5c9d20b98fc2d7.75327951.jpg");
+  background-image: url("../FileServer/UserPostPhotos/5c9d574a5c5bb6.90373090.jpg");
 }

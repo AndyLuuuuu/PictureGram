@@ -36,22 +36,6 @@
             <hr class="comment_hr"/>
         </div>
         <div class="popup_modal_post_comments" id="modal_post_comments">
-            <div class="comment">
-                <p class="comment_content">
-                    <b>Andy Lu</b> - Integer rhoncus interdum nulla, ac luctus lacus ultricies molestie. 
-                Curabitur at metus elit. Proin leo est, pellentesque a quam finibus, pulvinar tempor elit. 
-                Curabitur vehicula nisl ut neque maximus, at varius nibh ultricies. Sed facilisis pellentesque mi pretium facilisis.
-                </p>
-                <p class="comment_date">2019-01-02</p>
-            </div>
-            <div class="comment">
-                <p class="comment_content">
-                    <b>Andy Lu</b> - Integer rhoncus interdum nulla, ac luctus lacus ultricies molestie. 
-                Curabitur at metus elit. Proin leo est, pellentesque a quam finibus, pulvinar tempor elit. 
-                Curabitur vehicula nisl ut neque maximus, at varius nibh ultricies. Sed facilisis pellentesque mi pretium facilisis.
-                </p>
-                <p class="comment_date">2019-01-02</p>
-            </div>
         </div>
         <div class="comment_input_container"><input type="hidden" id="current_user" value=<?php echo $_SESSION['accountID']; ?>><input class="comment_input" id="comment_input" type="text" placeholder="Type comment..."/><input class="comment_submit" type="submit" value="Post comment" onclick="postComment()"/></div>
     </div>

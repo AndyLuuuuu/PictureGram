@@ -64,6 +64,7 @@ function fetchComments(photoid) {
         commentDiv.appendChild(date);
         fragment.appendChild(commentDiv);
       });
+      commentsDiv.appendChild(fragment);
     } else {
       alert("Oh no! Something went wrong!");
     }

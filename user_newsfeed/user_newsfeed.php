@@ -2,7 +2,7 @@
 <!-- <?php echo $_SESSION['accountID']; ?> -->
 <?php include '../views/navigationbar.php' ?>
 <section class="newsfeed_wrapper">
-    <h1>Discover PictureGram Posts</h1>
+    <h1 class="newsfeed_header">Discover PictureGram</h1>
     <div class="newsfeed_image"></div>
 </section>
 <?php include '../views/footer.php'?>

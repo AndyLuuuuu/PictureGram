@@ -82,7 +82,7 @@ class PDOConnection {
     }
 
     public function retrievePostsFromUser($accountID) {
-        $statement = $this->db_conn->prepare('SELECT Post.*, Account.accountName FROM Post INNER JOIN account ON Account.accountID = Post.accountID WHERE Post.accountID = :accountID');
+        $statement = $this->db_conn->prepare('SELECT Post.*, Account.accountName FROM Post INNER JOIN Account ON Account.accountID = Post.accountID WHERE Post.accountID = :accountID');
         $statement->bindParam(':accountID', $accountID);
         $statement->execute();
         $postRows = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -97,7 +97,7 @@ class PDOConnection {
     }
 
     public function retrieveAllPosts() {
-        $statement = $this->db_conn->prepare('SELECT Post.*, Account.accountName FROM Post INNER JOIN account ON Account.accountID = Post.accountID');
+        $statement = $this->db_conn->prepare('SELECT Post.*, Account.accountName FROM Post INNER JOIN Account ON Account.accountID = Post.accountID');
         $statement->execute();
         $postRows = $statement->fetchAll(PDO::FETCH_ASSOC);
         $posts = array();
@@ -111,7 +111,7 @@ class PDOConnection {
     }
 
     public function retrieveComments($postID) {
-        $statement = $this->db_conn->prepare('SELECT account.accountName, postcomment.comment, postcomment.commentID, postcomment.datePosted FROM account INNER JOIN postcomment ON account.accountID = postcomment.accountID WHERE postcomment.postID = :postID');
+        $statement = $this->db_conn->prepare('SELECT Account.accountName, PostComment.comment, PostComment.commentID, PostComment.datePosted FROM Account INNER JOIN PostComment ON Account.accountID = PostComment.accountID WHERE PostComment.postID = :postID');
         $statement->bindParam(':postID', $postID);
         $statement->execute();
         $comments = $statement->fetchAll(PDO::FETCH_ASSOC);
