@@ -22,12 +22,9 @@
         <?php endforeach ?>
     </div>
     <div class="popup_modal" id="popup_modal">
-    <div class="popup_modal_post_info">
-                <h2 class="popup_modal_post_title">POST TITLE</h2>
-                <h3 class="popup_modal_post_account">ACCOUNT NAME</h3>
-            </div>
         <div class="popup_modal_image"></div>
         <div class="popup_modal_post_details">
+        <h1 class="popup_modal_post_title"></h1>
         <div class="popup_modal_post_desc"> 
             <p></p>
         </div>

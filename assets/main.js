@@ -26,14 +26,13 @@ for (var i = 0; i < userImages.length; i++) {
     console.log(dataset);
     pageOverlay.style.display = "initial";
     popupModal.classList.add("popup_modal_show");
-    popupModal.children[0].children[0].textContent = dataset.postname;
-    popupModal.children[0].children[1].textContent = `Posted by: ${
-      dataset.accountname
-    }`;
-    popupModal.children[1].style.backgroundImage = `url('../FileServer/UserPostPhotos/${
+    popupModal.children[0].style.backgroundImage = `url('../FileServer/UserPostPhotos/${
       dataset["photoid"]
     }.${dataset["photoext"]}')`;
-    popupModal.children[2].children[0].textContent = dataset.postdesc;
+    popupModal.children[1].children[0].textContent = dataset.postname;
+    popupModal.children[1].children[1].innerHTML = `<b>${
+      dataset.accountname
+    }</b> - ${dataset.postdesc}`;
     fetchComments(dataset.photoid);
   });
 }
@@ -126,3 +125,16 @@ closeMenu.addEventListener("click", () => {
   dropdown.style.opacity = 0;
   dropdown.style.zIndex = -50;
 });
+
+function getRandomSize(min, max) {
+  return Math.round(Math.random() * (max - min) + min);
+}
+
+for (var i = 0; i < 60; i++) {
+  var width = getRandomSize(400, 600);
+  var height = getRandomSize(200, 400);
+  var image = document.createElement("img");
+  image.className = "newsfeed_image";
+  image.src = `//www.lorempixel.com/${width}/${height}`;
+  document.getElementById("newsfeed_images").appendChild(image);
+}

@@ -529,14 +529,14 @@ header .menuDropdown nav ul li a:link {
   bottom: 0;
   margin: auto;
   width: 50rem;
-  height: 53rem;
+  height: fit-content;
   display: flex;
   flex-flow: column;
   align-items: flex-start;
   background-color: white;
-  -webkit-box-shadow: 19px 25px 21px 0px rgba(87, 87, 87, 1);
-  -moz-box-shadow: 19px 25px 21px 0px rgba(87, 87, 87, 1);
-  box-shadow: 19px 25px 21px 0px rgba(87, 87, 87, 1);
+  -webkit-box-shadow: 19px 25px 21px 0px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 19px 25px 21px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: 19px 25px 21px 0px rgba(0, 0, 0, 0.5);
 }
 
 .popup_modal_show {
@@ -545,26 +545,12 @@ header .menuDropdown nav ul li a:link {
 
 .popup_modal_image {
   width: 50rem;
-  height: 30rem;
+  height: 35rem;
+  display: flex;
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
   background-color: black;
-}
-
-.popup_modal_post_info {
-  background-color: black;
-  padding: 1rem;
-  box-sizing: border-box;
-  width: 100%;
-  color: #e4e4e4;
-}
-
-.popup_modal_post_account {
-  font-weight: lighter;
-  font-size: 0.9rem;
-  margin-top: 0.5rem;
-  font-style: italic;
 }
 
 .popup_modal_post_details {
@@ -573,8 +559,11 @@ header .menuDropdown nav ul li a:link {
   width: 100%;
 }
 
+.popup_modal_post_title {
+  font-size: 1.3rem;
+}
+
 .popup_modal_post_desc {
-  min-height: 3rem;
   margin: 1rem 0;
   background-color: white;
   width: 100%;
@@ -597,6 +586,7 @@ header .menuDropdown nav ul li a:link {
 
 .popup_modal_post_comments {
   height: 8rem;
+  margin-bottom: 1.5rem;
   overflow-y: auto;
 }
 
@@ -616,6 +606,8 @@ header .menuDropdown nav ul li a:link {
 .comment_date {
   word-wrap: none;
   white-space: nowrap;
+  font-size: 0.8rem;
+  color: #686f74;
 }
 
 .comment_input_container {
@@ -674,10 +666,18 @@ header .menuDropdown nav ul li a:link {
   font-weight: bold;
 }
 
+.newsfeed_images {
+  line-height: 0;
+  -webkit-column-count: 5;
+  -webkit-column-gap: 5px;
+  -moz-column-count: 5;
+  -moz-column-gap: 5px;
+  column-count: 5;
+  column-gap: 5px;
+}
+
 .newsfeed_image {
-  width: 30rem;
-  height: 30rem;
-  background-position: center;
-  background-size: cover;
-  background-image: url("../FileServer/UserPostPhotos/5c9d574a5c5bb6.90373090.jpg");
+  width: 100%;
+  height: auto;
+  margin-bottom: 5px;
 }
