@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Yesteryear" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../assets/main.css">
+    <link rel="icon" href="../assets/images/icons/picturegram_favicon.png" type="image/x-icon">
 </head>
 
 <body>
