@@ -25,7 +25,7 @@ class PDOConnection {
     public function registerUser($email, $password, $accountName) {
         $accountID = uniqid("", true);
         $hashed_password = password_hash($password, PASSWORD_BCRYPT);
-        $statement = $this->db_conn->prepare("INSERT INTO Account SET accountID = :accountID, accountName = :accountName, profilePath = '1234', email = :email, password = :password");
+        $statement = $this->db_conn->prepare("INSERT INTO Account SET accountID = :accountID, accountName = :accountName, email = :email, password = :password");
         $statement->bindParam(':accountID', $accountID);
         $statement->bindParam(':accountName', $accountName);
         $statement->bindParam(':email', $email);
@@ -130,6 +130,20 @@ class PDOConnection {
         $statement->bindParam(':commentID', $commentID);        
         $statement->bindParam(':datePosted', $date);        
         $statement->bindParam(':comment', $comment);
+        if ($statement->execute()) {
+            $statement = null;
+            $this->closeDBConnection();
+            return true;
+        } else {
+            $statement = null;
+            $this->closeDBConnection();
+            return false;
+        }
+    }
+
+    public function deletePost($postID) {
+        $statement = $this->db_conn->prepare('DELETE FROM Post WHERE postID = :postID');
+        $statement->bindParam(':postID', $postID);
         if ($statement->execute()) {
             $statement = null;
             $this->closeDBConnection();
