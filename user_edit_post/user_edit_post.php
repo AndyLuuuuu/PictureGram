@@ -1,8 +1,8 @@
 <?php include '../views/header.php'; ?>
 <!-- <?php echo $_SESSION['accountID']; ?> -->
 <?php include '../views/navigationbar.php' ?>
-<section class="createPostContainer">
-    <h1 class="createPostH1">Edit post</h1>
+<section class="editPostContainer">
+    <h1 class="editPostH1">Edit post</h1>
     <img class="edit_post_image" src="../FileServer/UserPostPhotos/<?php echo $postID . "." . $photoExt?>"/>
         <form class="editPostForm" action="." method="POST" id="edit_post_form" enctype="multipart/form-data">
                 <input type="hidden" name="action" value="editPost"/>

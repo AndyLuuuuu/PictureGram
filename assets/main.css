@@ -319,11 +319,15 @@ header .menuDropdown nav ul li a:link {
 
 .profile_wrapper {
   position: relative;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
 }
 
-.profile_intro {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+.profileH1 {
+  font-size: 3rem;
+  font-weight: bold;
+  margin: 5rem 0 2rem 0;
 }
 
 .profile_main {
@@ -333,8 +337,8 @@ header .menuDropdown nav ul li a:link {
 }
 
 .user_image {
-  width: 100%;
-  height: 100%;
+  width: 22rem;
+  height: 22rem;
   object-fit: cover;
   object-position: center;
   opacity: 0.8;
@@ -742,9 +746,26 @@ header .menuDropdown nav ul li a:link {
 
 /* USER_EDIT_POST.PHP */
 
+.editPostContainer {
+  width: 100%;
+  height: calc(100vh - 5rem);
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.editPostH1 {
+  font-size: 2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin: 5rem 0 1rem 0;
+}
+
 .edit_post_image {
   width: 40rem;
   height: auto;
+  object-fit: contain;
 }
 
 .editPostForm {

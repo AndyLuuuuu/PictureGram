@@ -2,6 +2,7 @@
 <!-- <?php echo $_SESSION['accountID']; ?> -->
 <?php include '../views/navigationbar.php' ?>
 <section class="profile_wrapper">
+<h1 class="profileH1">Your Posts</h1>
     <div class="profile_main">
         <?php foreach ($posts as $post) : ?>
         <div class="user_image_container">
