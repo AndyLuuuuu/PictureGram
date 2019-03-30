@@ -7,7 +7,6 @@ USE PictureGramDB;
 CREATE TABLE Account (
     accountID CHAR(30) NOT NULL,
     accountName CHAR(25) NOT NULL,
-    profilePath VARCHAR(255), -- make NOT NULL later???
     email VARCHAR(255) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
     PRIMARY KEY (accountID)
@@ -40,23 +39,18 @@ CREATE TABLE PostComment (
         ON UPDATE CASCADE
 );
 
-
--- CREATE USER 'pg_user'@'localhost' IDENTIFIED BY 'pg_user';
--- GRANT SELECT, DELETE, INSERT, UPDATE ON PictureGramDB.* TO 'pg_user'@'localhost';
-
-
 SELECT account.accountName, postcomment.comment, postcomment.commentID, postcomment.datePosted FROM account INNER JOIN postcomment ON account.accountID = postcomment.accountID;
 
 -- SAMPLE DATA
 -- accounts
-INSERT INTO `account` (`accountID`, `accountName`, `profilePath`, `email`, `password`) VALUES
-('5c9da4054b8d06.58596558', 'FatBoogerThing', '1234', 'junyu_huang@hotmail.com', '$2y$10$vP3LqhIKTXzGcGXAOpo9/.4sneQHFS7RPOjsSfTbP5arRSp.ktLMa'),
-('5c9da876a75299.77259514', 'Papa Franku', '1234', 'gmiller@gmail.com', '$2y$10$/55Pq8Ytr6tAvJ859wik1Oacpw.uPqQ0RGJIlZIocesIc8jquoQ1y'),
-('5c9daa3858e542.16812950', 'yeehaw', '1234', 'goober@aol.net', '$2y$10$hoPjVwLldLIM6LO4A4C19eRfaHJ2UwEmfO/529dhehDhH1SRkBuz2'),
-('5c9dad433e9207.82480928', 'BIG CHUNGUS', '1234', 'bchung@aol.net', '$2y$10$hgq7zLsED8SuvHBOpR.A5eAsV1mBH4S6cX5FfgNl5L2VJdTXuCE/W');
+INSERT INTO `Account` (`accountID`, `accountName`, `email`, `password`) VALUES
+('5c9da4054b8d06.58596558', 'FatBoogerThing', 'junyu_huang@hotmail.com', '$2y$10$vP3LqhIKTXzGcGXAOpo9/.4sneQHFS7RPOjsSfTbP5arRSp.ktLMa'),
+('5c9da876a75299.77259514', 'Papa Franku', 'gmiller@gmail.com', '$2y$10$/55Pq8Ytr6tAvJ859wik1Oacpw.uPqQ0RGJIlZIocesIc8jquoQ1y'),
+('5c9daa3858e542.16812950', 'yeehaw', 'goober@aol.net', '$2y$10$hoPjVwLldLIM6LO4A4C19eRfaHJ2UwEmfO/529dhehDhH1SRkBuz2'),
+('5c9dad433e9207.82480928', 'BIG CHUNGUS', 'bchung@aol.net', '$2y$10$hgq7zLsED8SuvHBOpR.A5eAsV1mBH4S6cX5FfgNl5L2VJdTXuCE/W');
 
 -- posts
-INSERT INTO `post` (`accountID`, `postID`, `postName`, `postDesc`, `postImageExt`, `datePosted`) VALUES
+INSERT INTO `Post` (`accountID`, `postID`, `postName`, `postDesc`, `postImageExt`, `datePosted`) VALUES
 ('5c9da4054b8d06.58596558', '5c9da52e013183.78990681', 'HHNNNNNGG', 'now this is epic', 'png', '2019-03-29 00:00:00'),
 ('5c9da4054b8d06.58596558', '5c9da72f89cbb8.20757548', 'BEST PROF NA', '#notsellingout', 'png', '2019-03-29 00:00:00'),
 ('5c9da4054b8d06.58596558', '5c9da779d09e87.44187755', 'TREE FIDDY...', 'on the bench press', 'jpg', '2019-03-29 00:00:00'),
@@ -79,3 +73,7 @@ INSERT INTO `post` (`accountID`, `postID`, `postName`, `postDesc`, `postImageExt
 -- comments
 INSERT INTO `postcomment` (`accountID`, `postID`, `commentID`, `datePosted`, `comment`) VALUES
 ('5c9da4054b8d06.58596558', '5c9da52e013183.78990681', '5c9da6080eb379.05103199', '2019-03-29', 'no u');
+
+-- omit creating a user if user account below has already been created
+CREATE USER 'pg_user'@'localhost' IDENTIFIED BY 'pg_user';
+GRANT SELECT, DELETE, INSERT, UPDATE ON PictureGramDB.* TO 'pg_user'@'localhost';

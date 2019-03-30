@@ -25,7 +25,7 @@ class PDOConnection {
     public function registerUser($email, $password, $accountName) {
         $accountID = uniqid("", true);
         $hashed_password = password_hash($password, PASSWORD_BCRYPT);
-        $statement = $this->db_conn->prepare("INSERT INTO Account SET accountID = :accountID, accountName = :accountName, profilePath = '1234', email = :email, password = :password");
+        $statement = $this->db_conn->prepare("INSERT INTO Account SET accountID = :accountID, accountName = :accountName, email = :email, password = :password");
         $statement->bindParam(':accountID', $accountID);
         $statement->bindParam(':accountName', $accountName);
         $statement->bindParam(':email', $email);
