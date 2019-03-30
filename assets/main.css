@@ -372,7 +372,9 @@ header .menuDropdown nav ul li a:link {
 }
 
 .login_h1 {
-  font-size: 3.5em;
+  font-family: "Yesteryear", cursive;
+  font-weight: 300;
+  font-size: 4.5em;
   margin-bottom: 1rem;
 }
 
@@ -413,7 +415,9 @@ header .menuDropdown nav ul li a:link {
 }
 
 .register_h1 {
-  font-size: 3.5em;
+  font-family: "Yesteryear", cursive;
+  font-weight: 300;
+  font-size: 4.5em;
   margin-bottom: 1rem;
 }
 
