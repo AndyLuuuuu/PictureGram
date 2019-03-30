@@ -76,9 +76,10 @@ if (profileUserImages != null || profileUserImages != undefined) {
         dataset["photoid"]
       }.${dataset["photoext"]}')`;
       popupModal.children[1].children[0].textContent = dataset.postname;
-      popupModal.children[1].children[1].innerHTML = `<b>${
+      popupModal.children[1].children[3].innerHTML = `<b>${
         dataset.accountname
       }</b> - ${dataset.postdesc}`;
+      console.log(popupModal.children);
       fetchComments(dataset.photoid);
     });
   }
