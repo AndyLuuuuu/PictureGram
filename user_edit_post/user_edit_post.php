@@ -2,18 +2,16 @@
 <!-- <?php echo $_SESSION['accountID']; ?> -->
 <?php include '../views/navigationbar.php' ?>
 <section class="createPostContainer">
-    <h1 class="createPostH1">Create a new post</h1>
-    <img src="../FileServer/UserPostPhotos/<?php echo $postID?>"/>
-        <form class="imageUploadForm" action="." method="POST" id="imageUploadForm" enctype="multipart/form-data">
-                <input type="hidden" name="action" value="image_file_upload"/>
-                <input class="imageUploadTitle" type="text" name="imageUploadTitle" placeholder="Write a post title..." form="imageUploadForm"/>
-                <textarea class="imageUploadDesc" maxlength="200" placeholder="Write a description..." form="imageUploadForm" name="imageUploadDesc"></textarea>
-            <div class="imageUploadButtons">
-                <input type="file" name="imageFile"/>
-            <div class="cancelSubmitButtons">
-                <button class="imageUploadButton" type="submit" value="Cancel">Cancel</button>
-                <button class="imageUploadButton" type="submit" value="Upload Photo">Upload Photo</button>
-            </div>
+    <h1 class="createPostH1">Edit post</h1>
+    <img class="edit_post_image" src="../FileServer/UserPostPhotos/<?php echo $postID . "." . $photoExt?>"/>
+        <form class="editPostForm" action="." method="POST" id="edit_post_form" enctype="multipart/form-data">
+                <input type="hidden" name="action" value="editPost"/>
+                <input type="hidden" name="postID" value="<?php echo $postID?>">
+                <input class="editPostTitle" type="text" name="editPostTitle" placeholder="Write a new post title..." form="edit_post_form" value="<?php echo $postName ?>">
+                <textarea class="editPostDesc" maxlength="200" placeholder="Write a new description..." form="edit_post_form" name="editPostDesc"><?php echo $postDesc ?></textarea>
+            <div class="editPostButtons">
+                <input class="editPostButton" type="submit" name="button" value="Cancel">
+                <input class="editPostButton" type="submit" name="button" value="Edit Photo">
             </div>
         </form>
 </section>

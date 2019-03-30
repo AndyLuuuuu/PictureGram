@@ -154,5 +154,31 @@ class PDOConnection {
             return false;
         }
     }
+
+    public function editPost($postID, $postName, $postDesc) {
+        $statement = $this->db_conn->prepare('UPDATE Post SET postName = :postName, postDesc = :postDesc WHERE postID = :postID');
+        $statement->bindParam(':postID', $postID);
+        $statement->bindParam(':postName', $postName);
+        $statement->bindParam(':postDesc', $postDesc);
+        if ($statement->execute()) {
+            $statement = null;
+            $this->closeDBConnection();
+            return true;
+        } else {
+            $statement = null;
+            $this->closeDBConnection();
+            return false;
+        }
+    }
+
+    public function fetchPost($postID) {
+        $statement = $this->db_conn->prepare('SELECT postName, postDesc FROM Post WHERE postID = :postID');
+        $statement->bindParam(':postID', $postID);
+        if ($statement->execute()) {
+            return $statement->fetch(PDO::FETCH_ASSOC);
+        } else {
+            return false;
+        }
+    }
 }
 ?>

@@ -34,19 +34,16 @@ if (popupModalMoreMenu != undefined || popupModalMoreMenu != null) {
         }
       }
     };
-    var data =
-      "postID=" +
-      currentPhotoID +
-      "&photoExt=" +
-      currentPhotoExt +
-      "&action=deletePost";
+    var data = "postID=" + currentPhotoID + "&action=deletePost";
     xhr.open("POST", "../user_profile/user_actions.php", true);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhr.send(data);
   });
 
   popupModalEditOption.addEventListener("click", () => {
-    location.replace(`../user_edit_post?postID=${currentPhotoID}`);
+    location.replace(
+      `../user_edit_post?postID=${currentPhotoID}&photoExt=${currentPhotoExt}`
+    );
   });
 
   popupModalMoreOptions.addEventListener("click", () => {
@@ -60,27 +57,31 @@ pageOverlay.addEventListener("click", () => {
     commentsDiv.removeChild(commentsDiv.firstChild);
   }
   pageOverlay.style.display = "none";
+  currentPhotoExt = null;
+  currentPhotoID = null;
   popupModalMoreMenu.classList.toggle("popup_modal_more_menu_show");
 });
 
 // RETRIEVE COMMENTS FROM PHP CONNECTED TO PDO SQL DB
-for (var i = 0; i < profileUserImages.length; i++) {
-  profileUserImages[i].addEventListener("click", event => {
-    var dataset = event.target.dataset;
-    currentPhotoID = dataset.photoid;
-    currentPhotoExt = dataset.photoext;
-    console.log(dataset);
-    pageOverlay.style.display = "initial";
-    popupModal.classList.add("popup_modal_show");
-    popupModal.children[0].style.backgroundImage = `url('../FileServer/UserPostPhotos/${
-      dataset["photoid"]
-    }.${dataset["photoext"]}')`;
-    popupModal.children[1].children[0].textContent = dataset.postname;
-    popupModal.children[1].children[1].innerHTML = `<b>${
-      dataset.accountname
-    }</b> - ${dataset.postdesc}`;
-    fetchComments(dataset.photoid);
-  });
+if (profileUserImages != null || profileUserImages != undefined) {
+  for (var i = 0; i < profileUserImages.length; i++) {
+    profileUserImages[i].addEventListener("click", event => {
+      var dataset = event.target.dataset;
+      currentPhotoID = dataset.photoid;
+      currentPhotoExt = dataset.photoext;
+      console.log(dataset);
+      pageOverlay.style.display = "initial";
+      popupModal.classList.add("popup_modal_show");
+      popupModal.children[0].style.backgroundImage = `url('../FileServer/UserPostPhotos/${
+        dataset["photoid"]
+      }.${dataset["photoext"]}')`;
+      popupModal.children[1].children[0].textContent = dataset.postname;
+      popupModal.children[1].children[1].innerHTML = `<b>${
+        dataset.accountname
+      }</b> - ${dataset.postdesc}`;
+      fetchComments(dataset.photoid);
+    });
+  }
 }
 
 function addDiscoverImageEvent() {
@@ -174,28 +175,25 @@ function postComment() {
     xhr.send(data);
   }
 }
+if (showMenu != null || showMenu != undefined) {
+  showMenu.addEventListener("click", () => {
+    header.classList.toggle("toggleHeader");
+    logoH1.classList.toggle("toggleLogo");
+    showMenu.classList.toggle("invisible");
+    closeMenu.classList.toggle("visible");
+    dropdown.style.zIndex = 50;
+    dropdown.style.opacity = 1;
+  });
 
-showMenu.addEventListener("click", () => {
-  header.classList.toggle("toggleHeader");
-  logoH1.classList.toggle("toggleLogo");
-  showMenu.classList.toggle("invisible");
-  closeMenu.classList.toggle("visible");
-  dropdown.style.zIndex = 50;
-  dropdown.style.opacity = 1;
-});
-
-closeMenu.addEventListener("click", () => {
-  console.log("clicked");
-  header.classList.toggle("toggleHeader");
-  logoH1.classList.toggle("toggleLogo");
-  showMenu.classList.toggle("invisible");
-  closeMenu.classList.toggle("visible");
-  dropdown.style.opacity = 0;
-  dropdown.style.zIndex = -50;
-});
-
-function getRandomSize(min, max) {
-  return Math.round(Math.random() * (max - min) + min);
+  closeMenu.addEventListener("click", () => {
+    console.log("clicked");
+    header.classList.toggle("toggleHeader");
+    logoH1.classList.toggle("toggleLogo");
+    showMenu.classList.toggle("invisible");
+    closeMenu.classList.toggle("visible");
+    dropdown.style.opacity = 0;
+    dropdown.style.zIndex = -50;
+  });
 }
 
 window.addEventListener("scroll", () => {
