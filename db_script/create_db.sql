@@ -48,11 +48,11 @@ SELECT account.accountName, postcomment.comment, postcomment.commentID, postcomm
 
 -- SAMPLE DATA
 -- accounts
-INSERT INTO `account` (`accountID`, `accountName`, `profilePath`, `email`, `password`) VALUES
-('5c9da4054b8d06.58596558', 'FatBoogerThing', '1234', 'junyu_huang@hotmail.com', '$2y$10$vP3LqhIKTXzGcGXAOpo9/.4sneQHFS7RPOjsSfTbP5arRSp.ktLMa'),
-('5c9da876a75299.77259514', 'Papa Franku', '1234', 'gmiller@gmail.com', '$2y$10$/55Pq8Ytr6tAvJ859wik1Oacpw.uPqQ0RGJIlZIocesIc8jquoQ1y'),
-('5c9daa3858e542.16812950', 'yeehaw', '1234', 'goober@aol.net', '$2y$10$hoPjVwLldLIM6LO4A4C19eRfaHJ2UwEmfO/529dhehDhH1SRkBuz2'),
-('5c9dad433e9207.82480928', 'BIG CHUNGUS', '1234', 'bchung@aol.net', '$2y$10$hgq7zLsED8SuvHBOpR.A5eAsV1mBH4S6cX5FfgNl5L2VJdTXuCE/W');
+INSERT INTO `account` (`accountID`, `accountName`, `email`, `password`) VALUES
+('5c9da4054b8d06.58596558', 'FatBoogerThing', 'junyu_huang@hotmail.com', '$2y$10$vP3LqhIKTXzGcGXAOpo9/.4sneQHFS7RPOjsSfTbP5arRSp.ktLMa'),
+('5c9da876a75299.77259514', 'Papa Franku', 'gmiller@gmail.com', '$2y$10$/55Pq8Ytr6tAvJ859wik1Oacpw.uPqQ0RGJIlZIocesIc8jquoQ1y'),
+('5c9daa3858e542.16812950', 'yeehaw', 'goober@aol.net', '$2y$10$hoPjVwLldLIM6LO4A4C19eRfaHJ2UwEmfO/529dhehDhH1SRkBuz2'),
+('5c9dad433e9207.82480928', 'BIG CHUNGUS', 'bchung@aol.net', '$2y$10$hgq7zLsED8SuvHBOpR.A5eAsV1mBH4S6cX5FfgNl5L2VJdTXuCE/W');
 
 -- posts
 INSERT INTO `post` (`accountID`, `postID`, `postName`, `postDesc`, `postImageExt`, `datePosted`) VALUES

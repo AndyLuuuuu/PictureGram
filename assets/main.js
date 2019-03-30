@@ -38,7 +38,20 @@ popupModalDeleteOption.addEventListener("click", () => {
 });
 
 popupModalEditOption.addEventListener("click", () => {
-  console.log("ROFL");
+  var xhr = new XMLHttpRequest();
+  xhr.onload = () => {
+    if (xhr.status >= 200 && xhr.status < 300) {
+      if (xhr.response === "SUCCESS") {
+        location.reload();
+      } else {
+        alert("OH NO! Something went wrong :(");
+      }
+    }
+  };
+  var data = "postID=" + currentPhotoID + "&action=editPost";
+  xhr.open("POST", "../user_edit_post", true);
+  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhr.send(data);
 });
 
 popupModalMoreOptions.addEventListener("click", () => {
