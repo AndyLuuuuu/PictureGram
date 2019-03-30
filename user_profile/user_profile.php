@@ -19,6 +19,11 @@
         <div class="popup_modal_image"></div>
         <div class="popup_modal_post_details">
         <h1 class="popup_modal_post_title"></h1>
+        <img class="popup_modal_more_options" id="popup_modal_more_options" src="../assets/images/icons/MoreOptions.svg" alt="More Options"/>
+        <div class="popup_modal_more_menu" id="popup_modal_more_menu">
+            <input id="editPost" value="Edit"/>
+            <input id="deletePost" value="Delete"/>
+        </div>
         <div class="popup_modal_post_desc"> 
             <p></p>
         </div>

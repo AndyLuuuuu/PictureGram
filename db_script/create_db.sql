@@ -43,7 +43,7 @@ SELECT account.accountName, postcomment.comment, postcomment.commentID, postcomm
 
 -- SAMPLE DATA
 -- accounts
-INSERT INTO `Account` (`accountID`, `accountName`, `email`, `password`) VALUES
+INSERT INTO `account` (`accountID`, `accountName`, `email`, `password`) VALUES
 ('5c9da4054b8d06.58596558', 'FatBoogerThing', 'junyu_huang@hotmail.com', '$2y$10$vP3LqhIKTXzGcGXAOpo9/.4sneQHFS7RPOjsSfTbP5arRSp.ktLMa'),
 ('5c9da876a75299.77259514', 'Papa Franku', 'gmiller@gmail.com', '$2y$10$/55Pq8Ytr6tAvJ859wik1Oacpw.uPqQ0RGJIlZIocesIc8jquoQ1y'),
 ('5c9daa3858e542.16812950', 'yeehaw', 'goober@aol.net', '$2y$10$hoPjVwLldLIM6LO4A4C19eRfaHJ2UwEmfO/529dhehDhH1SRkBuz2'),

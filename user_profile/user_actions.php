@@ -22,6 +22,16 @@ switch($action) {
         } else {
             echo 'FAIL';
         }
+        break;
+    case 'deletePost':
+        $postID = filter_input(INPUT_POST, 'postID');
+        $db = new PDOConnection();
+        if ($db->deletePost($postID)) {
+            echo 'SUCCESS';
+        } else {
+            echo 'FAIL';
+        }
+    break;
     default:
         break;
 }

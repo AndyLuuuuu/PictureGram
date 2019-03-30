@@ -140,5 +140,19 @@ class PDOConnection {
             return false;
         }
     }
+
+    public function deletePost($postID) {
+        $statement = $this->db_conn->prepare('DELETE FROM Post WHERE postID = :postID');
+        $statement->bindParam(':postID', $postID);
+        if ($statement->execute()) {
+            $statement = null;
+            $this->closeDBConnection();
+            return true;
+        } else {
+            $statement = null;
+            $this->closeDBConnection();
+            return false;
+        }
+    }
 }
 ?>

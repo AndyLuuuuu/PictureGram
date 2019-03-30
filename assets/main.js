@@ -8,10 +8,55 @@ const pageOverlay = document.getElementById("page_overlay");
 const popupModal = document.getElementById("popup_modal");
 const commentsDiv = document.getElementById("modal_post_comments");
 const discoverUserImages = document.getElementsByClassName("discover_image");
+const popupModalMoreOptions = document.getElementById(
+  "popup_modal_more_options"
+);
+const popupModalMoreMenu = document.getElementById("popup_modal_more_menu");
+const popupModalDeleteOption = document.getElementById("deletePost");
+const popupModalEditOption = document.getElementById("editPost");
 
 console.log(discoverUserImages);
 
 var currentPhotoID = null;
+
+popupModalDeleteOption.addEventListener("click", () => {
+  console.log(currentPhotoID);
+  var xhr = new XMLHttpRequest();
+  xhr.onload = () => {
+    if (xhr.status >= 200 && xhr.status < 300) {
+      if (xhr.response === "SUCCESS") {
+        location.reload();
+      } else {
+        alert("OH NO! Something went wrong :(");
+      }
+    }
+  };
+  var data = "postID=" + currentPhotoID + "&action=deletePost";
+  xhr.open("POST", "../user_profile/user_actions.php", true);
+  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhr.send(data);
+});
+
+popupModalEditOption.addEventListener("click", () => {
+  var xhr = new XMLHttpRequest();
+  xhr.onload = () => {
+    if (xhr.status >= 200 && xhr.status < 300) {
+      if (xhr.response === "SUCCESS") {
+        location.reload();
+      } else {
+        alert("OH NO! Something went wrong :(");
+      }
+    }
+  };
+  var data = "postID=" + currentPhotoID + "&action=editPost";
+  xhr.open("POST", "../user_edit_post", true);
+  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhr.send(data);
+});
+
+popupModalMoreOptions.addEventListener("click", () => {
+  popupModalMoreMenu.classList.toggle("popup_modal_more_menu_show");
+});
 
 pageOverlay.addEventListener("click", () => {
   popupModal.classList.remove("popup_modal_show");
@@ -19,13 +64,14 @@ pageOverlay.addEventListener("click", () => {
     commentsDiv.removeChild(commentsDiv.firstChild);
   }
   pageOverlay.style.display = "none";
+  popupModalMoreMenu.classList.toggle("popup_modal_more_menu_show");
 });
 
 // RETRIEVE COMMENTS FROM PHP CONNECTED TO PDO SQL DB
 for (var i = 0; i < profileUserImages.length; i++) {
   profileUserImages[i].addEventListener("click", event => {
     var dataset = event.target.dataset;
-    currentPhotoID = dataset.postid;
+    currentPhotoID = dataset.photoid;
     console.log(dataset);
     pageOverlay.style.display = "initial";
     popupModal.classList.add("popup_modal_show");
