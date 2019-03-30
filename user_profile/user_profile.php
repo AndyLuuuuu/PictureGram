@@ -2,21 +2,15 @@
 <!-- <?php echo $_SESSION['accountID']; ?> -->
 <?php include '../views/navigationbar.php' ?>
 <section class="profile_wrapper">
-    <div class="profile_intro">
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-    </div>
     <div class="profile_main">
         <?php foreach ($posts as $post) : ?>
         <div class="user_image_container">
-            <div class="user_image_overlay" data-accountname="<?php echo $post->getAccountName()?>"
+            <img data-accountname="<?php echo $post->getAccountName()?>"
                 data-photoid="<?php echo "{$post->getPostID()}"?>"
                 data-photoext="<?php echo "{$post->getExtension()}"?>"
                 data-postname="<?php echo "{$post->getPostName()}"?>"
-                data-postdesc="<?php echo "{$post->getPostDesc()}"?>">
-            </div>
-            <img class="user_images" src=<?php echo "../FileServer/UserPostPhotos/{$post->getPostID()}.{$post->getExtension()}"?> alt="User Images" />
+                data-postdesc="<?php echo "{$post->getPostDesc()}"?>" 
+                class="user_image" src=<?php echo "../FileServer/UserPostPhotos/{$post->getPostID()}.{$post->getExtension()}"?> alt="User Images" />
         </div>
 
         <?php endforeach ?>

@@ -1,5 +1,5 @@
 <?php 
-class Post {
+class Post implements JsonSerializable {
     private $postID;
     private $postName;
     private $postDesc;
@@ -14,6 +14,17 @@ class Post {
         $this->postImageExt = $postImageExt;
         $this->datePosted = $datePosted;
         $this->accountName = $accountName;
+    }
+
+    public function jsonSerialize() {
+        return array(
+            'postID' => $this->postID,
+            'postName' => $this->postName,
+            'postDesc' => $this->postDesc,
+            'postImageExt' => $this->postImageExt,
+            'datePosted' => $this->datePosted,
+            'accountName' => $this->accountName
+        );
     }
 
     public function getPostID() {

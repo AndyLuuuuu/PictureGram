@@ -68,7 +68,30 @@ INSERT INTO `Post` (`accountID`, `postID`, `postName`, `postDesc`, `postImageExt
 ('5c9dad433e9207.82480928', '5c9db0f03585a2.57003667', 'heh heh boi', '( Í¡Â° ÍœÊ– Í¡Â°)', 'png', '2019-03-29 00:00:00'),
 ('5c9dad433e9207.82480928', '5c9db19c4528f4.64273185', 'K', 'no java', 'png', '2019-03-29 00:00:00'),
 ('5c9dad433e9207.82480928', '5c9db21d4a43d0.56976930', 'M E E K E E', 'M A O S E', 'jpg', '2019-03-29 00:00:00'),
-('5c9da4054b8d06.58596558', '5c9db4e33ce3a0.51421226', 'PLATELET CHAN', 'uwu', 'jpg', '2019-03-29 00:00:00');
+('5c9da4054b8d06.58596558', '5c9db4e33ce3a0.51421226', 'PLATELET CHAN', 'uwu', 'jpg', '2019-03-29 00:00:00'),
+
+-- Newly added posts
+('5c9da876a75299.77259514','5c9dc8b139be86.99288786','Arcade','Sportsland Arcade in Shinjuku','jpg','2019-03-22 08:20:02'),
+('5c9da876a75299.77259514','5c9dc8b139c045.08270942','Seaside Park','Seaside Park in Nagasaki','jpg','2019-03-28 02:00:00'),
+('5c9da876a75299.77259514','5c9dc8b139c070.91006422','Nighttime Streets Photo','Hong Kong street at night','jpg','2019-03-25 06:04:23'),
+('5c9da876a75299.77259514','5c9dc8b139c082.77131843','Chinese Food','Deep-fried octopus','jpg','2019-03-24 07:00:00'),
+('5c9da876a75299.77259514','5c9dc8b139c094.94506135','Hong Kong Streets','Streets of Hong Kong','jpg','2019-03-22 06:00:00'),
+('5c9da876a75299.77259514','5c9dc8b139c0a0.10500960','Noodles','Great tasting noodles in Hong Kong','jpg','2019-03-23 09:00:00'),
+('5c9da876a75299.77259514','5c9dc8b139c0b0.90588616','Korean Castle','View inside some Korean castle in Seoul','jpg','2019-03-27 12:00:00'),
+('5c9da876a75299.77259514','5c9dc8b139c0c8.97314525','Japanese Teahouse','Teahouse in Kyoto','jpg','2019-03-27 05:34:00'),
+('5c9da876a75299.77259514','5c9dc8b139c0e2.33991542','Kinkakuji','Kinkakuji in Kyoto','jpg','2019-03-21 04:40:00'),
+('5c9da876a75299.77259514','5c9dc8b139c0f9.82311039','View of Kinkakuji','Nice view of Kinkakuji','jpg','2019-03-26 08:00:00'),
+('5c9da876a75299.77259514','5c9dc8b139c104.12601877','Nice weather','Nice weather and view in Glover Garden','jpg','2019-03-25 02:06:00'),
+('5c9da876a75299.77259514','5c9dc8b139c110.79706311','Glover Garden','Taking a break in Glover Garden','jpg','2019-03-20 01:00:00'),
+('5c9da876a75299.77259514','5c9dc8b139c120.50686514','Nagasaki Port','Great weather in Nagasaki!','jpg','2019-03-22 22:00:00'),
+('5c9da876a75299.77259514','5c9dc8b139c131.33187111','Pond','Nice little pond in Glover Garden','jpg','2019-03-19 04:00:00'),
+('5c9da876a75299.77259514','5c9dc8b139c144.11163735','Stray Cat','Found a friendly stray cat in Kagoshima. It was very cute','jpg','2019-03-26 02:00:00'),
+('5c9da876a75299.77259514','5c9dc8b139c153.26748856','Train Station','Cool train station in Ibusuki','jpg','2019-03-14 07:01:02'),
+('5c9da876a75299.77259514','5c9dc8b139c168.05290563','Osaka','Dotonbori Glico man','jpg','2019-02-22 10:50:00'),
+('5c9da876a75299.77259514','5c9dc8b139c179.07307729','Shrine','Hirano-Jinja','jpg','2019-03-23 08:00:00'),
+('5c9da876a75299.77259514','5c9dc8b139c180.13918729','Yokohama','Went to Minato Mirai, but it looks like it is going to start raining...','jpg','2019-03-24 02:00:00'),
+('5c9da876a75299.77259514','5c9dc8b139c196.04164930','Sky Tree','Going to go up Tokyo Sky Tree for the first time!','jpg','2019-03-26 10:00:00');
+
 
 -- comments
 INSERT INTO `postcomment` (`accountID`, `postID`, `commentID`, `datePosted`, `comment`) VALUES

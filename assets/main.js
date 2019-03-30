@@ -3,10 +3,13 @@ const closeMenu = document.getElementById("closeMenu");
 const dropdown = document.getElementById("dropdown");
 const header = document.getElementById("headerContainer");
 const logoH1 = document.getElementById("PGLogo");
-const userImages = document.getElementsByClassName("user_image_overlay");
+const profileUserImages = document.getElementsByClassName("user_image");
 const pageOverlay = document.getElementById("page_overlay");
 const popupModal = document.getElementById("popup_modal");
 const commentsDiv = document.getElementById("modal_post_comments");
+const discoverUserImages = document.getElementsByClassName("discover_image");
+
+console.log(discoverUserImages);
 
 var currentPhotoID = null;
 
@@ -19,10 +22,10 @@ pageOverlay.addEventListener("click", () => {
 });
 
 // RETRIEVE COMMENTS FROM PHP CONNECTED TO PDO SQL DB
-for (var i = 0; i < userImages.length; i++) {
-  userImages[i].addEventListener("click", event => {
+for (var i = 0; i < profileUserImages.length; i++) {
+  profileUserImages[i].addEventListener("click", event => {
     var dataset = event.target.dataset;
-    currentPhotoID = dataset.photoid;
+    currentPhotoID = dataset.postid;
     console.log(dataset);
     pageOverlay.style.display = "initial";
     popupModal.classList.add("popup_modal_show");
@@ -36,6 +39,28 @@ for (var i = 0; i < userImages.length; i++) {
     fetchComments(dataset.photoid);
   });
 }
+
+function addDiscoverImageEvent() {
+  for (var i = 0; i < discoverUserImages.length; i++) {
+    discoverUserImages[i].addEventListener("click", event => {
+      var dataset = event.target.dataset;
+      currentPhotoID = dataset.photoid;
+      console.log(event.target.dataset);
+      pageOverlay.style.display = "initial";
+      popupModal.classList.add("popup_modal_show");
+      popupModal.children[0].style.backgroundImage = `url('../FileServer/UserPostPhotos/${
+        dataset["photoid"]
+      }.${dataset["photoext"]}')`;
+      popupModal.children[1].children[0].textContent = dataset.postname;
+      popupModal.children[1].children[1].innerHTML = `<b>${
+        dataset.accountname
+      }</b> - ${dataset.postdesc}`;
+      fetchComments(dataset.photoid);
+    });
+  }
+}
+
+addDiscoverImageEvent();
 
 function fetchComments(photoid) {
   var xhr = new XMLHttpRequest();
@@ -126,13 +151,45 @@ closeMenu.addEventListener("click", () => {
   dropdown.style.zIndex = -50;
 });
 
+function getRandomSize(min, max) {
+  return Math.round(Math.random() * (max - min) + min);
+}
+
 window.addEventListener("scroll", () => {
   var middle =
     (document.documentElement.scrollHeight -
-      document.documentElement.clientHeight) /
-    2;
+      document.documentElement.clientHeight) *
+    0.9;
   if (window.pageYOffset > middle) {
-    console.log("lol");
+    var xhr = new XMLHttpRequest();
+    xhr.onload = () => {
+      if (xhr.status >= 200 && xhr.status < 300) {
+        console.log(JSON.parse(xhr.response));
+        JSON.parse(xhr.response).map(post => {
+          var discoverImageContainer = document.createElement("div");
+          discoverImageContainer.className = "discover_image_container";
+          var discoverImage = document.createElement("img");
+          discoverImage.className = "discover_image";
+          discoverImage.dataset["accountname"] = post.accountName;
+          discoverImage.dataset["photoid"] = post.postID;
+          discoverImage.dataset["photoext"] = post.postImageExt;
+          discoverImage.dataset["postname"] = post.postName;
+          discoverImage.dataset["postdesc"] = post.postDesc;
+          discoverImage.src = `../FileServer/UserPostPhotos/${post.postID}.${
+            post.postImageExt
+          }`;
+          document
+            .getElementById("discover_images")
+            .append(discoverImageContainer);
+          discoverImageContainer.append(discoverImage);
+        });
+        addDiscoverImageEvent();
+      }
+    };
+    var data = "offset=" + discoverUserImages.length + "&action=fetchPosts";
+    xhr.open("POST", "../user_discover/user_actions.php", true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhr.send(data);
   }
 });
 
@@ -140,15 +197,3 @@ window.addEventListener("scroll", () => {
 console.log(
   document.documentElement.scrollHeight - document.documentElement.clientHeight
 );
-// function getRandomSize(min, max) {
-//   return Math.round(Math.random() * (max - min) + min);
-// }
-
-// for (var i = 0; i < 60; i++) {
-//   var width = getRandomSize(400, 600);
-//   var height = getRandomSize(200, 400);
-//   var image = document.createElement("img");
-//   image.className = "newsfeed_image";
-//   image.src = `//www.lorempixel.com/${width}/${height}`;
-//   document.getElementById("newsfeed_images").appendChild(image);
-// }
