@@ -59,7 +59,7 @@ pageOverlay.addEventListener("click", () => {
   pageOverlay.style.display = "none";
   currentPhotoExt = null;
   currentPhotoID = null;
-  popupModalMoreMenu.classList.toggle("popup_modal_more_menu_show");
+  popupModalMoreMenu.classList.remove("popup_modal_more_menu_show");
 });
 
 // RETRIEVE COMMENTS FROM PHP CONNECTED TO PDO SQL DB
