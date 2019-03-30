@@ -18,45 +18,41 @@ const popupModalEditOption = document.getElementById("editPost");
 console.log(discoverUserImages);
 
 var currentPhotoID = null;
+var currentPhotoExt = null;
 
-popupModalDeleteOption.addEventListener("click", () => {
-  console.log(currentPhotoID);
-  var xhr = new XMLHttpRequest();
-  xhr.onload = () => {
-    if (xhr.status >= 200 && xhr.status < 300) {
-      if (xhr.response === "SUCCESS") {
-        location.reload();
-      } else {
-        alert("OH NO! Something went wrong :(");
+if (popupModalMoreMenu != undefined || popupModalMoreMenu != null) {
+  console.log(popupModal.children[0].style);
+  popupModalDeleteOption.addEventListener("click", () => {
+    console.log(currentPhotoID);
+    var xhr = new XMLHttpRequest();
+    xhr.onload = () => {
+      if (xhr.status >= 200 && xhr.status < 300) {
+        if (xhr.response === "SUCCESS") {
+          location.reload();
+        } else {
+          alert("OH NO! Something went wrong :(");
+        }
       }
-    }
-  };
-  var data = "postID=" + currentPhotoID + "&action=deletePost";
-  xhr.open("POST", "../user_profile/user_actions.php", true);
-  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xhr.send(data);
-});
+    };
+    var data =
+      "postID=" +
+      currentPhotoID +
+      "&photoExt=" +
+      currentPhotoExt +
+      "&action=deletePost";
+    xhr.open("POST", "../user_profile/user_actions.php", true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhr.send(data);
+  });
 
-popupModalEditOption.addEventListener("click", () => {
-  var xhr = new XMLHttpRequest();
-  xhr.onload = () => {
-    if (xhr.status >= 200 && xhr.status < 300) {
-      if (xhr.response === "SUCCESS") {
-        location.reload();
-      } else {
-        alert("OH NO! Something went wrong :(");
-      }
-    }
-  };
-  var data = "postID=" + currentPhotoID + "&action=editPost";
-  xhr.open("POST", "../user_edit_post", true);
-  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xhr.send(data);
-});
+  popupModalEditOption.addEventListener("click", () => {
+    location.replace(`../user_edit_post?postID=${currentPhotoID}`);
+  });
 
-popupModalMoreOptions.addEventListener("click", () => {
-  popupModalMoreMenu.classList.toggle("popup_modal_more_menu_show");
-});
+  popupModalMoreOptions.addEventListener("click", () => {
+    popupModalMoreMenu.classList.toggle("popup_modal_more_menu_show");
+  });
+}
 
 pageOverlay.addEventListener("click", () => {
   popupModal.classList.remove("popup_modal_show");
@@ -72,6 +68,7 @@ for (var i = 0; i < profileUserImages.length; i++) {
   profileUserImages[i].addEventListener("click", event => {
     var dataset = event.target.dataset;
     currentPhotoID = dataset.photoid;
+    currentPhotoExt = dataset.photoext;
     console.log(dataset);
     pageOverlay.style.display = "initial";
     popupModal.classList.add("popup_modal_show");
