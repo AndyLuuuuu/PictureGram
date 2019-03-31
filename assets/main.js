@@ -34,7 +34,12 @@ if (popupModalMoreMenu != undefined || popupModalMoreMenu != null) {
         }
       }
     };
-    var data = "postID=" + currentPhotoID + "&action=deletePost";
+    var data =
+      "postID=" +
+      currentPhotoID +
+      "&photoExt=" +
+      currentPhotoExt +
+      "&action=deletePost";
     xhr.open("POST", "../user_profile/user_actions.php", true);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhr.send(data);

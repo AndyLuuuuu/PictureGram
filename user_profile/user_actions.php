@@ -24,7 +24,9 @@ switch($action) {
         }
         break;
     case 'deletePost':
+        $fileServerPath = "../FileServer/UserPostPhotos/";
         $postID = filter_input(INPUT_POST, 'postID');
+        $photoExt = filter_input(INPUT_POST, 'photoExt');
         $db = new PDOConnection();
         if ($db->deletePost($postID)) {
             echo 'SUCCESS';
