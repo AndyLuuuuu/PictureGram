@@ -17,7 +17,7 @@ switch ($action) {
             $postName = $postInfo['postName'];
             $postDesc = $postInfo['postDesc'];
             if ($postID == NULL || $photoExt == NULL) {
-                header('Location: ../../../user_profile');
+                header('Location: ../user_profile');
             } else {
                 include('./user_edit_post.php');
             }
