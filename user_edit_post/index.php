@@ -17,7 +17,7 @@ switch ($action) {
             $postName = $postInfo['postName'];
             $postDesc = $postInfo['postDesc'];
             if ($postID == NULL || $photoExt == NULL) {
-                header('Location: ../../../user_profile');
+                header('Location: ../user_profile');
             } else {
                 include('./user_edit_post.php');
             }
@@ -29,7 +29,7 @@ switch ($action) {
         $formAction = filter_input(INPUT_POST, 'button');
         if ($formAction == NULL || $formAction == 'Cancel') {
             header('Location: ../../../user_profile');
-        } else if ($formAction == 'Edit Photo') {
+        } else if ($formAction == 'Edit Post') {
             $postID = filter_input(INPUT_POST, 'postID');
             $newPostName = filter_input(INPUT_POST, 'editPostTitle');
             $newPostDesc = filter_input(INPUT_POST, 'editPostDesc');
