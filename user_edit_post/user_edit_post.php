@@ -11,7 +11,7 @@
                 <textarea class="editPostDesc" maxlength="200" placeholder="Write a new description..." form="edit_post_form" name="editPostDesc"><?php echo $postDesc ?></textarea>
             <div class="editPostButtons">
                 <input class="editPostButton" type="submit" name="button" value="Cancel">
-                <input class="editPostButton" type="submit" name="button" value="Edit Photo">
+                <input class="editPostButton" type="submit" name="button" value="Edit Post">
             </div>
         </form>
 </section>

@@ -29,7 +29,7 @@ switch ($action) {
         $formAction = filter_input(INPUT_POST, 'button');
         if ($formAction == NULL || $formAction == 'Cancel') {
             header('Location: ../../../user_profile');
-        } else if ($formAction == 'Edit Photo') {
+        } else if ($formAction == 'Edit Post') {
             $postID = filter_input(INPUT_POST, 'postID');
             $newPostName = filter_input(INPUT_POST, 'editPostTitle');
             $newPostDesc = filter_input(INPUT_POST, 'editPostDesc');
