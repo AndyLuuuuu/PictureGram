@@ -35,7 +35,7 @@ switch ($action) {
             $newPostDesc = filter_input(INPUT_POST, 'editPostDesc');
             $db = new PDOConnection();
             if ($db->editPost($postID, $newPostName, $newPostDesc)) {
-                header('Location: ../../../user_profile');
+                header('Location: ../user_profile');
             } else {
                 $error = "Oh no! Something went wrong!";
                 include("../views/errorPage.php");
