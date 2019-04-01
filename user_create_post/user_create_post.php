@@ -10,8 +10,8 @@
             <div class="imageUploadButtons">
                 <input type="file" name="imageFile"/>
             <div class="cancelSubmitButtons">
-                <button class="imageUploadButton" type="submit" value="Cancel">Cancel</button>
-                <button class="imageUploadButton" type="submit" value="Upload Photo">Upload Photo</button>
+                <button class="imageUploadButton" type="submit" name="uploadPhoto" value="Cancel">Cancel</button>
+                <button class="imageUploadButton" type="submit" name="uploadPhoto" value="Upload Photo">Upload Photo</button>
             </div>
             </div>
         </form>
