@@ -17,9 +17,9 @@ switch ($action) {
         } else if (filter_input(INPUT_POST, 'uploadPhoto') == "Upload Photo") {
             if(isset($_FILES['imageFile'])) {
                 if ($_FILES['imageFile']['size'] <= 0) {
-                    $error = "Something is wrong with this image...";
+                    $error = "Something went wrong... :(";
                     include('../views/errorPage.php');
-                }
+                } else {
                 $fileName = $_FILES['imageFile']['name'];
                 $fileNameArray = explode('.', $fileName);
                 $fileExt = end($fileNameArray);
@@ -50,6 +50,7 @@ switch ($action) {
                 }
             }
         }
+    }
         break;
     default:
         break;

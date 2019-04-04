@@ -188,7 +188,7 @@ select {
 
 body {
   margin: 0 auto;
-  width: 75vw;
+  width: 70vw;
   height: 100vh;
 }
 
@@ -327,7 +327,7 @@ header .menuDropdown nav ul li a:link {
 .profileH1 {
   font-size: 3rem;
   font-weight: bold;
-  margin: 5rem 0 2rem 0;
+  margin: 5rem 0;
 }
 
 .profile_main {
@@ -337,8 +337,8 @@ header .menuDropdown nav ul li a:link {
 }
 
 .user_image {
-  width: 22rem;
-  height: 22rem;
+  width: 18rem;
+  height: 18rem;
   object-fit: cover;
   object-position: center;
   opacity: 0.8;
