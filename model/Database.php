@@ -97,7 +97,7 @@ class PDOConnection {
     }
 
     public function retrieveAllPosts($offset) {
-        $statement = $this->db_conn->prepare('SELECT Post.*, Account.accountName FROM Post INNER JOIN Account ON Account.accountID = Post.accountID ORDER BY Post.datePosted LIMIT 20 OFFSET :offset');
+        $statement = $this->db_conn->prepare('SELECT Post.*, Account.accountName FROM Post INNER JOIN Account ON Account.accountID = Post.accountID ORDER BY Post.datePosted DESC LIMIT 20 OFFSET :offset');
         $statement->bindParam(':offset', $offset, PDO::PARAM_INT);
         $statement->execute();
         $postRows = $statement->fetchAll(PDO::FETCH_ASSOC);

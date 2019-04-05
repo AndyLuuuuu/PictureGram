@@ -759,11 +759,11 @@ header .menuDropdown nav ul li a:link {
   font-size: 2rem;
   font-weight: bold;
   text-transform: uppercase;
-  margin: 5rem 0 1rem 0;
+  margin: 20rem 0 1rem 0;
 }
 
 .edit_post_image {
-  width: 40rem;
+  width: 30rem;
   height: auto;
   object-fit: contain;
 }

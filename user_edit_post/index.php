@@ -28,7 +28,7 @@ switch ($action) {
     case 'editPost':
         $formAction = filter_input(INPUT_POST, 'button');
         if ($formAction == NULL || $formAction == 'Cancel') {
-            header('Location: ../../../user_profile');
+            header('Location: ../user_profile');
         } else if ($formAction == 'Save') {
             $postID = filter_input(INPUT_POST, 'postID');
             $newPostName = filter_input(INPUT_POST, 'editPostTitle');

@@ -39,7 +39,7 @@ CREATE TABLE PostComment (
         ON UPDATE CASCADE
 );
 
-SELECT account.accountName, postcomment.comment, postcomment.commentID, postcomment.datePosted FROM account INNER JOIN postcomment ON account.accountID = postcomment.accountID;
+SELECT Account.accountName, PostComment.comment, PostComment.commentID, PostComment.datePosted FROM Account INNER JOIN PostComment ON Account.accountID = PostComment.accountID;
 
 -- SAMPLE DATA
 -- accounts
